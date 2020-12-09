@@ -30,12 +30,14 @@ public class PlayerMovement : MonoBehaviour
 	                Vector2 pos = touch.position;
 	                setTujuanAgent(pos);
 	            }
+                Debug.Log("Touch");
 	        }
         	
     	} else {
 
     		if(Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject()){
     			setTujuanAgent(Input.mousePosition);
+                Debug.Log("Mouse");
     		}
     	}
 
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public void setTujuanAgent(Vector3 pos){
     	RaycastHit hit;
         Ray raycast = Camera.main.ScreenPointToRay (pos);
-        if (Physics.Raycast(raycast, out hit, 100f))
+        if (Physics.Raycast(raycast, out hit, 200f))
         {
         	playerAgent.SetDestination(hit.point);
         	playerAgent.Resume();
